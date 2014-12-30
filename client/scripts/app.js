@@ -32,7 +32,7 @@ $(document).ready(function(){
         console.log(rooms);
         for(var key in rooms){
           if(rooms[key] !== undefined || rooms[key] !== null){
-            $('.dropdown').append('<option value="' + htmlEscape(rooms[key]) +'"'+ '>'+ htmlEscape(rooms[key]) + '</option>');
+            $('.dropdown').append('<option class="' + rooms[key] + '"value="' + htmlEscape(rooms[key]) +'"'+ '>'+ htmlEscape(rooms[key]) + '</option>');
           }
         }
       },
@@ -79,6 +79,13 @@ var ajaxPost = function(){
   $('.postData').on('click', function(){
     ajaxPost();
   });
+
+  $('.dropdown').change(function(){
+    var myClass = $(this).parent().attr('class');
+    alert(myClass);
+    // $('li').not('!' + '.' + myClass).show();
+    // $('li').not('.' + myClass).hide();
+  })
 
   var htmlEscape = function(str){
     return String(str)
