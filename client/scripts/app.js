@@ -4,6 +4,7 @@ $(document).ready(function(){
 
   var ajaxData;
   var rooms = {};
+  var  friends = [];
 
   $('.refreshData').hide();
 
@@ -27,7 +28,7 @@ $(document).ready(function(){
           if(!rooms[data.results[i].roomname]){
             rooms[data.results[i].roomname] = data.results[i].roomname;
           }
-          $('.messages').append('<ul id="listStyle"  class="' + htmlEscape(data.results[i].roomname) +  '"><li>' + '<i>' + htmlEscape(data.results[i].username) +'</i>' + ': ' + htmlEscape(data.results[i].text) + ': ' + '<b class="' + htmlEscape(data.results[i].roomname) +  '">' + htmlEscape(data.results[i].roomname) + '</b>' + '</li></ul>');
+          $('.messages').append('<ul id="listStyle" class="' + htmlEscape(data.results[i].roomname) +  '"><li><i><a class="friends" href="#">@'+ htmlEscape(data.results[i].username) + '</a></i>' + ': ' + htmlEscape(data.results[i].text) + ': ' + '<b class="' + htmlEscape(data.results[i].roomname) +  '">' + htmlEscape(data.results[i].roomname) + '</b><small><a class='+ htmlEscape(data.results[i].username) +' href="#">'+ "Add Friend" +'</a></small></li></ul>');
         }
         console.log(rooms);
         for(var key in rooms){
@@ -81,11 +82,21 @@ var ajaxPost = function(){
   });
 
   $('.dropdown').change(function(){
-    var myClass = $(this).parent().attr('class');
-    alert(myClass);
-    // $('li').not('!' + '.' + myClass).show();
-    // $('li').not('.' + myClass).hide();
+    var myClass = $(this).val();
+    $('ul').closest('.' + myClass).show();
+    $('ul').not('.' + myClass).hide();
   })
+
+  $('.showAll').on('click', function(){
+    $('ul').show();
+  });
+
+  $('.friends').on('click', function(){
+    var friendClass = $(this);
+    alert(friendClass);
+  });
+
+
 
   var htmlEscape = function(str){
     return String(str)
