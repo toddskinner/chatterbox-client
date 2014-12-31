@@ -2,6 +2,15 @@
 
 $(document).ready(function(){
 
+  $('.chatter').hide();
+  $('.showAll').hide();
+  $('.postAll').hide();
+  $('.updateData').hide();
+  $('.chatter').fadeIn(1000);
+  $('.showAll').fadeIn(500);
+  $('.postAll').fadeIn(500);
+  $('.updateData').fadeIn(500);
+
   var ajaxData;
   var rooms = {};
   var  friends = [];
@@ -28,7 +37,7 @@ $(document).ready(function(){
           if(!rooms[data.results[i].roomname]){
             rooms[data.results[i].roomname] = data.results[i].roomname;
           }
-          $('.messages').append('<ul id="listStyle" class="' + htmlEscape(data.results[i].roomname) +  '"><li><i><a class="friends" href="#">@'+ htmlEscape(data.results[i].username) + '</a></i>' + ': ' + htmlEscape(data.results[i].text) + ': ' + '<b class="' + htmlEscape(data.results[i].roomname) +  '">' + htmlEscape(data.results[i].roomname) + '</b><small><a class='+ htmlEscape(data.results[i].username) +' href="#">'+ "Add Friend" +'</a></small></li></ul>');
+          $('.messages').append('<ul id="listStyle" class="' + htmlEscape(data.results[i].roomname) + " " + htmlEscape(data.results[i].username) +'"><li class"'+ htmlEscape(data.results[i].username) + '"><a class="friends" href="#">@'+ htmlEscape(data.results[i].username) + '</a>' + ': ' + htmlEscape(data.results[i].text) + ': ' + '<b class="' + htmlEscape(data.results[i].roomname) +  '">Room: ' + htmlEscape(data.results[i].roomname) + '</b><small><a class="addButton" value="'+ htmlEscape(data.results[i].username) +'"'+' href="#">'+ "Add Friend" +'</a></small></li></ul>');
         }
         console.log(rooms);
         for(var key in rooms){
@@ -91,9 +100,9 @@ var ajaxPost = function(){
     $('ul').show();
   });
 
-  $('.friends').on('click', function(){
-    var friendClass = $(this);
-    alert(friendClass);
+  $('.addButton').on('click', function(){
+    var myVal = $(this).val();
+    alert(myVal);
   });
 
 

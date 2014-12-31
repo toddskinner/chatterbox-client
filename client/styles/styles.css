@@ -2,7 +2,7 @@ body {
     background: #eee;
     text-align: center;
     padding: 0 25px;
-    font-family: arial, sans-serif;
+    font-family: 'Poiret One', cursive;
 }
 
 #main {
@@ -84,6 +84,8 @@ form input[type=text] {
 }
 
 #listStyle li {
+    border-style: solid;
+    border-width: 2px;
     list-style-type: none;
     padding: 10px;
     -webkit-box-shadow: 5px 5px 2px 0px rgba(0,0,0,0.75);
@@ -91,6 +93,22 @@ form input[type=text] {
     box-shadow: 5px 5px 2px 0px rgba(0,0,0,0.75);
 }
 
+.button {
+    width: auto;
+    height: 25px;
+    border-radius: 5px;
+    -webkit-transition-duration: .6s;
+}
+
+.button:hover {
+    background-color: white;
+    -webkit-transition-duration: .6s;
+}
+
+.chatter {
+    font-size: 2em;
+    transition-duration: 1s;
+}
 
 
 
